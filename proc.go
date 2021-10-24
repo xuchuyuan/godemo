@@ -8,11 +8,12 @@ import (
 	"time"
 )
 
-var sema = gsema.NewSemaphore(6)
+var sema = gsema.NewSemaphore(2)
 
 func main() {
 	userCount := 10
 	for i := 0; i < userCount; i++ {
+		fmt.Printf("go func:%d, time: %d\n", i, time.Now().Unix())
 		go Read(i)
 	}
 
